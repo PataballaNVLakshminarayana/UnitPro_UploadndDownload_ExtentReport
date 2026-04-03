@@ -11,27 +11,25 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.0.x'
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
 
-    - name: Restore NuGet Packages
-      run: nuget restore UnitPro_UploadndDownload.slnx
+      - name: Restore NuGet Packages
+        run: nuget restore UnitPro_UploadndDownload.slnx
 
-    - name: Build Solution
-      run: dotnet build UnitPro_UploadndDownload.slnx --configuration Release --no-restore
+      - name: Build Solution
+        run: dotnet build UnitPro_UploadndDownload.slnx --configuration Release --no-restore
 
-    - name: Run Tests
-      run: dotnet test UnitPro_UploadndDownload.slnx --no-build --verbosity normal
-   
-    - name: Upload Extent Report
-  uses: actions/upload-artifact@v4
-  with:
-    name: ExtentReport
-    path: |
-      **/TestReport/*.html
-      **/TestReport.html
+      - name: Run Tests
+        run: dotnet test UnitPro_UploadndDownload.slnx --no-build --verbosity normal
+
+      - name: Upload Extent Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ExtentReport
+          path: Reports
