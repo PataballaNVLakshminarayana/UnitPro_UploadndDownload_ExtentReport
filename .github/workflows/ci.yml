@@ -29,9 +29,9 @@ jobs:
       run: dotnet test UnitPro_UploadndDownload.slnx --no-build --verbosity normal
    
     - name: Upload Extent Report
-      uses: actions/upload-artifact@v4
-      with:
-      name: ExtentReport
-      path: |
-           **/TestReport/*.html
-           **/TestReport.html
+  uses: actions/upload-artifact@v4
+  with:
+    name: ExtentReport
+    path: |
+      **/TestReport/*.html
+      **/TestReport.html
